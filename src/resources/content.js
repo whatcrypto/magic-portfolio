@@ -1,16 +1,16 @@
 import { Logo } from "@once-ui-system/core";
 
 const person = {
-  firstName: "Selene",
-  lastName: "Yu",
+  firstName: "Ali",
+  lastName: " Chehab",
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  role: "Software Engineer",
+  avatar: "/images/avatar.png",
+  email: "chehab.ali.f@gmail.com",
+  location: "Oregon, USA", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: ["English", "Arabic"], // optional: Leave the array empty if you don't want to display languages
 };
 
 const newsletter = {
@@ -18,8 +18,10 @@ const newsletter = {
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: (
     <>
-      I occasionally write about design, technology, and share thoughts on the intersection of
-      creativity and engineering.
+      Founder of SweepChain, a Web3 platform built on the Sui blockchain that
+      delivers transparent and fair sweepstakes with provably fair winner
+      selection, instant settlement, and complete blockchain transparency for
+      companies worldwide.
     </>
   ),
 };
@@ -30,17 +32,12 @@ const social = [
   {
     name: "GitHub",
     icon: "github",
-    link: "https://github.com/once-ui-system/nextjs-starter",
+    link: "https://github.com/chehabali",
   },
   {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    link: "https://www.linkedin.com/in/alifchehab",
   },
   {
     name: "Email",
@@ -51,22 +48,24 @@ const social = [
 
 const home = {
   path: "/",
-  image: "/images/og/home.jpg",
+  image: "/images/og/home.png",
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
-  featured: {
-    display: true,
-    title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
-    href: "/work/building-once-ui-a-customizable-design-system",
-  },
-  subline: (
+  headline: (
     <>
-      I'm Selene, a design engineer at <Logo icon="/trademarks/wordmark-dark.svg" style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      Building AI-powered fintech solutions and transparent blockchain platforms
     </>
   ),
+  featured: {
+    display: true,
+    title: (
+      <>
+        Recent project: <strong className="ml-4">SweepChain</strong>
+      </>
+    ),
+    href: "https://sui-drab.vercel.app/",
+  },
 };
 
 const about = {
@@ -90,34 +89,37 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Selene is a Jakarta-based design engineer with a passion for transforming complex challenges
-        into simple, elegant design solutions. Her work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Ali is a software engineer with a passion for building scalable and
+        efficient systems. He's also the founder of SweepChain, a Web3 platform
+        built on the Sui blockchain that delivers transparent and fair
+        sweepstakes with provably fair winner selection, instant settlement, and
+        complete blockchain transparency for companies worldwide.
       </>
     ),
   },
   work: {
-    display: true, // set to false to hide this section
-    title: "Work Experience",
+    display: true,
+    title: "Work Experience", // set to false to hide this <section></section>
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "SweepChain",
+        timeframe: "2024 - Present",
+        role: "Founder",
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Built the SweepChain platform, a Web3 platform built on the Sui
+            blockchain that delivers transparent and fair sweepstakes with
+            provably fair winner selection, instant settlement, and complete
+            blockchain transparency for companies worldwide.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Raised 2.5M USD in seed funding from a16z, a16z crypto, and other
           </>,
         ],
         images: [
           // optional: leave the array empty if you don't want to display images
           {
-            src: "/images/projects/project-01/cover-01.jpg",
+            src: "/images/projects/project-01/sweepchain.png",
             alt: "Once UI Project",
             width: 16,
             height: 9,
@@ -125,17 +127,25 @@ const about = {
         ],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "Palantir",
+        timeframe: "2022 - 2024",
+        role: "Software Engineer",
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Developed and maintained large-scale software systems for
+            data-driven decision making, contributing to products deployed at
+            critical institutions across public and private sectors.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Built features used by research scientists, aerospace engineers,
+            intelligence analysts, and economic forecasters worldwide using
+            Java, Go, TypeScript, and modern technologies like React and
+            Elasticsearch.
+          </>,
+          <>
+            Collaborated with cross-functional teams including Product Managers,
+            Designers, and Forward Deployed Engineers to solve complex customer
+            problems and deliver high-impact solutions.
           </>,
         ],
         images: [],
@@ -143,36 +153,57 @@ const about = {
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
-      },
-      {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "Oregon State University",
+        description: <>Double major in Computer Science and Finance</>,
+        timeframe: "2015 - 2019",
       },
     ],
   },
   technical: {
-    display: true, // set to false to hide this section
-    title: "Technical skills",
+    display: true,
     skills: [
       {
-        title: "Figma",
-        description: <>Able to prototype in Figma with Once UI with unnatural speed.</>,
-        // optional: leave the array empty if you don't want to display images
+        title: "Blockchain & Web3", // set to false to hide this <section></section>
+        description: (
+          <>
+            Building decentralized applications on the Sui blockchain using Move
+            and Rust. Experienced with smart contract development, DeFi
+            protocols, and blockchain infrastructure for transparent and
+            scalable Web3 solutions.
+          </>
+        ),
         images: [
           {
-            src: "/images/projects/project-01/cover-02.jpg",
+            src: "/images/projects/project-01/cover-02.webp",
             alt: "Project image",
             width: 16,
             height: 9,
           },
           {
-            src: "/images/projects/project-01/cover-03.jpg",
+            // src: "/images/projects/project-01/cover-03.webp",
+            // alt: "Project image",
+            // width: 16,
+            // height: 9,
+          },
+        ],
+      },
+      {
+        title: "Full Stack Development", // set to false to hide this <section></section>
+        description: (
+          <>
+            Expert in building complete web applications with Next.js, React,
+            TypeScript, and Node.js. Proficient in modern frontend frameworks,
+            server-side rendering, API development, and creating responsive,
+            performant user experiences.
+          </>
+        ),
+        images: [
+          {
+            src: "/images/projects/project-01/cover-04.jpg",
             alt: "Project image",
             width: 16,
             height: 9,
@@ -180,12 +211,29 @@ const about = {
         ],
       },
       {
-        title: "Next.js",
-        description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
+        title: "Cloud & Database Technologies", // set to false to hide this <section></section>
+        description: (
+          <>
+            Experienced with AWS services, MongoDB, Supabase, and Vercel for
+            deployment and hosting. Skilled in database design, cloud
+            architecture, serverless functions, and building scalable backend
+            infrastructure.
+          </>
+        ),
+        images: [],
+      },
+      {
+        title: "Programming Languages & Tools", // set to false to hide this <section></section>
+        description: (
+          <>
+            Proficient in JavaScript, TypeScript, Rust, Go, Java, Python, and
+            modern development tools. Experience with Git, Docker, CI/CD
+            pipelines, testing frameworks, and agile development methodologies.
+          </>
+        ),
         images: [
           {
-            src: "/images/projects/project-01/cover-04.jpg",
+            src: "/images/projects/project-01/cover-05.jpg",
             alt: "Project image",
             width: 16,
             height: 9,

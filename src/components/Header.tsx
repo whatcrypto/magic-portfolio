@@ -5,7 +5,15 @@ import { useEffect, useState } from "react";
 
 import { Fade, Flex, Line, ToggleButton } from "@once-ui-system/core";
 
-import { routes, display, person, about, blog, work, gallery } from "@/resources";
+import {
+  routes,
+  display,
+  person,
+  about,
+  blog,
+  work,
+  gallery,
+} from "@/resources";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./Header.module.scss";
 
@@ -14,21 +22,57 @@ type TimeDisplayProps = {
   locale?: string; // Optionally allow locale, defaulting to 'en-GB'
 };
 
-const TimeDisplay: React.FC<TimeDisplayProps> = ({ timeZone, locale = "en-GB" }) => {
+const TimeDisplay: React.FC<TimeDisplayProps> = ({
+  timeZone,
+  locale = "en-GB",
+}) => {
   const [currentTime, setCurrentTime] = useState("");
 
   useEffect(() => {
     const updateTime = () => {
       const now = new Date();
+
+      // Convert location string to valid IANA timezone
+      // Common location mappings to IANA timezone identifiers
+      const timezoneMap: Record<string, string> = {
+        "Oregon, USA": "America/Los_Angeles",
+        "California, USA": "America/Los_Angeles",
+        "New York, USA": "America/New_York",
+        "London, UK": "Europe/London",
+        "Paris, France": "Europe/Paris",
+        "Tokyo, Japan": "Asia/Tokyo",
+        "Sydney, Australia": "Australia/Sydney",
+      };
+
+      // Use mapped timezone or fallback to UTC if location not found
+      const validTimeZone = timezoneMap[timeZone] || "UTC";
+
       const options: Intl.DateTimeFormatOptions = {
-        timeZone,
+        timeZone: validTimeZone,
         hour: "2-digit",
         minute: "2-digit",
         second: "2-digit",
         hour12: false,
       };
-      const timeString = new Intl.DateTimeFormat(locale, options).format(now);
-      setCurrentTime(timeString);
+
+      try {
+        const timeString = new Intl.DateTimeFormat(locale, options).format(now);
+        setCurrentTime(timeString);
+      } catch (error) {
+        // Fallback to UTC if timezone is still invalid
+        const fallbackOptions: Intl.DateTimeFormatOptions = {
+          timeZone: "UTC",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+        };
+        const timeString = new Intl.DateTimeFormat(
+          locale,
+          fallbackOptions
+        ).format(now);
+        setCurrentTime(`${timeString} UTC`);
+      }
     };
 
     updateTime();
@@ -48,7 +92,15 @@ export const Header = () => {
   return (
     <>
       <Fade hide="s" fillWidth position="fixed" height="80" zIndex={9} />
-      <Fade show="s" fillWidth position="fixed" bottom="0" to="top" height="80" zIndex={9} />
+      <Fade
+        show="s"
+        fillWidth
+        position="fixed"
+        bottom="0"
+        to="top"
+        height="80"
+        zIndex={9}
+      />
       <Flex
         fitHeight
         position="unset"
@@ -60,7 +112,12 @@ export const Header = () => {
         horizontal="center"
         data-border="rounded"
       >
-        <Flex paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s">
+        <Flex
+          paddingLeft="12"
+          fillWidth
+          vertical="center"
+          textVariant="body-default-s"
+        >
           {display.location && <Flex hide="s">{person.location}</Flex>}
         </Flex>
         <Flex fillWidth horizontal="center">
@@ -73,9 +130,18 @@ export const Header = () => {
             horizontal="center"
             zIndex={1}
           >
-            <Flex gap="4" vertical="center" textVariant="body-default-s" suppressHydrationWarning>
+            <Flex
+              gap="4"
+              vertical="center"
+              textVariant="body-default-s"
+              suppressHydrationWarning
+            >
               {routes["/"] && (
-                <ToggleButton prefixIcon="home" href="/" selected={pathname === "/"} />
+                <ToggleButton
+                  prefixIcon="home"
+                  href="/"
+                  selected={pathname === "/"}
+                />
               )}
               <Line background="neutral-alpha-medium" vert maxHeight="24" />
               {routes["/about"] && (
@@ -163,7 +229,9 @@ export const Header = () => {
             textVariant="body-default-s"
             gap="20"
           >
-            <Flex hide="s">{display.time && <TimeDisplay timeZone={person.location} />}</Flex>
+            <Flex hide="s">
+              {display.time && <TimeDisplay timeZone={person.location} />}
+            </Flex>
           </Flex>
         </Flex>
       </Flex>
